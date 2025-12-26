@@ -147,7 +147,7 @@ Formulaire → DTO → Mapper → CartItem → Session
 ```php
 public function dtoToCartItem(AddToCartDTO $dto): CartItem
 {
-    return new CartItem($dto->getColor(), $dto->getQuantity(), new \DateTimeImmutable());
+    return new CartItem($dto->getColor(), $dto->getQuantity());
 }
 ```
 
