@@ -7,7 +7,6 @@ class CartItem
     public function __construct(
         private string $color,
         private int $quantity,
-        private \DateTimeImmutable $addedAt
     ) {
     }
 
@@ -21,17 +20,13 @@ class CartItem
         return $this->quantity;
     }
 
-    public function getAddedAt(): \DateTimeImmutable
-    {
-        return $this->addedAt;
-    }
+
 
     public function addQuantity(int $quantity): self
     {
         return new self(
             $this->color,
             $this->quantity + $quantity,
-            $this->addedAt
         );
     }
 
@@ -40,7 +35,6 @@ class CartItem
         return [
             'color' => $this->color,
             'quantity' => $this->quantity,
-            'addedAt' => $this->addedAt->format('Y-m-d H:i:s'),
         ];
     }
 
@@ -49,7 +43,6 @@ class CartItem
         return new self(
             $data['color'],
             $data['quantity'],
-            new \DateTimeImmutable($data['addedAt'])
         );
     }
 }
