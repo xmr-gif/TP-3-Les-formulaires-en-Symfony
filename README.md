@@ -30,7 +30,7 @@ L’objectif est de mettre en pratique les **formulaires Symfony**, la **validat
 
 ```text
 Formulaire → DTO → Mapper → Value Object → Service → Session
-
+```
 ---
 
 ## 🎯 Ce que j'ai retenu
