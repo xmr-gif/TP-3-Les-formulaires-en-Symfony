@@ -12,7 +12,7 @@ class CartMapper
         return new CartItem(
             color: $dto->getColor(),
             quantity: $dto->getQuantity(),
-            addedAt: new \DateTimeImmutable()
+
         );
     }
 }
