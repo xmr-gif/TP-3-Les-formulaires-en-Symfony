@@ -1,0 +1,55 @@
+{# templates/cart/view.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1 class="mb-4">Shopping Cart</h1>
+
+        {% if items is empty %}
+            <div class="alert alert-info">
+                Your cart is empty. <a href="{{ path('app_product_show') }}">Continue shopping</a>
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Color</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total = 0 %}
+                    {% for item in items %}
+                        {% set subtotal = item.quantity * product.price %}
+                        {% set total = total + subtotal %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.colors[item.color] }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>${{ product.price }}</td>
+                            <td>${{ subtotal|number_format(2) }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                        <td><strong>${{ total|number_format(2) }}</strong></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="mt-3">
+                <a href="{{ path('app_product_show') }}" class="btn btn-secondary">Continue Shopping</a>
+                <button class="btn btn-success">Checkout</button>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
